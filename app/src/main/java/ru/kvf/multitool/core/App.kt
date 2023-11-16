@@ -1,6 +1,7 @@
 package ru.kvf.multitool.core
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
 
@@ -12,5 +13,12 @@ class App : Application() {
         fun print(message: String) {
             Log.d(TAG, message)
         }
+
+        lateinit var context: App
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        context = this
     }
 }

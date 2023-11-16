@@ -44,6 +44,12 @@ fun SelectFeatureUi(
                 onClick(Screen.Duck)
             }
         }
+
+        item {
+            Cell(name = Screen.PickPhoto.name) {
+                onClick(Screen.PickPhoto)
+            }
+        }
     }
 }
 

@@ -10,6 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ru.kvf.multitool.feature.cat.ui.CatUi
+import ru.kvf.multitool.feature.pick_photo.PickPhotoUi
 import ru.kvf.multitool.feature.select_feature.SelectFeatureUi
 
 @Composable
@@ -35,6 +36,10 @@ fun Navigation(
 
         composable(Screen.Cat.name) {
             CatUi()
+        }
+
+        composable(Screen.PickPhoto.name) {
+            PickPhotoUi()
         }
     }
 }
