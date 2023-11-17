@@ -10,23 +10,23 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ru.kvf.multitool.feature.cat.ui.CatUi
-import ru.kvf.multitool.feature.pick_photo.photos_list.ui.PhotosListUi
+import ru.kvf.multitool.feature.gallery.galleryRouter
 import ru.kvf.multitool.feature.select_feature.SelectFeatureUi
 
 @Composable
 fun Navigation(
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = Screen.SelectFeature.name) {
-        composable(Screen.SelectFeature.name) {
+    NavHost(navController = navController, startDestination = RootScreen.SelectFeature.route) {
+        composable(RootScreen.SelectFeature.route) {
             SelectFeatureUi(
                 onClick = { screen ->
-                    navController.navigate(screen.name)
+                    navController.navigate(screen.route)
                 }
             )
         }
 
-        composable(Screen.Duck.name) {
+        composable(RootScreen.Duck.route) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -34,12 +34,10 @@ fun Navigation(
             )
         }
 
-        composable(Screen.Cat.name) {
+        composable(RootScreen.Cat.route) {
             CatUi()
         }
 
-        composable(Screen.PickPhoto.name) {
-            PhotosListUi()
-        }
+        galleryRouter(navController)
     }
 }

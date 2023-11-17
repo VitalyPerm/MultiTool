@@ -1,4 +1,4 @@
-package ru.kvf.multitool.feature.pick_photo.photos_list.ui
+package ru.kvf.multitool.feature.gallery.photos_list.ui
 
 sealed interface PhotosListSideEffect {
     object AskPhotoPermission : PhotosListSideEffect

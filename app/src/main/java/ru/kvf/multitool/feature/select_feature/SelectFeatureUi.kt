@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -16,15 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.kvf.multitool.feature.navigation.Screen
+import ru.kvf.multitool.feature.navigation.RootScreen
 import kotlin.random.Random
 
 @Composable
 fun SelectFeatureUi(
-    onClick: (Screen) -> Unit
+    onClick: (RootScreen) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -34,20 +32,20 @@ fun SelectFeatureUi(
             .fillMaxSize()
     ) {
         item {
-            Cell(name = Screen.Cat.name) {
-                onClick(Screen.Cat)
+            Cell(name = RootScreen.Cat.route) {
+                onClick(RootScreen.Cat)
             }
         }
 
         item {
-            Cell(name = Screen.Duck.name) {
-                onClick(Screen.Duck)
+            Cell(name = RootScreen.Duck.route) {
+                onClick(RootScreen.Duck)
             }
         }
 
         item {
-            Cell(name = Screen.PickPhoto.name) {
-                onClick(Screen.PickPhoto)
+            Cell(name = RootScreen.Gallery.route) {
+                onClick(RootScreen.Gallery)
             }
         }
     }

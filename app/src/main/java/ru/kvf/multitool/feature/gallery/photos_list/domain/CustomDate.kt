@@ -1,4 +1,4 @@
-package ru.kvf.multitool.feature.pick_photo.photos_list.domain
+package ru.kvf.multitool.feature.gallery.photos_list.domain
 
 import java.text.SimpleDateFormat
 import java.util.Calendar

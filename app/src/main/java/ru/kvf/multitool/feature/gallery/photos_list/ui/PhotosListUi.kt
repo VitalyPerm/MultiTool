@@ -1,29 +1,27 @@
-package ru.kvf.multitool.feature.pick_photo.photos_list.ui
+package ru.kvf.multitool.feature.gallery.photos_list.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,13 +40,14 @@ import org.orbitmvi.orbit.compose.collectSideEffect
 import ru.kvf.multitool.core.App
 import ru.kvf.multitool.core.theme.Typography
 import ru.kvf.multitool.core.widget.FullScreenLoader
-import ru.kvf.multitool.feature.pick_photo.photos_list.domain.CustomDate
-import ru.kvf.multitool.feature.pick_photo.photos_list.domain.Photo
+import ru.kvf.multitool.feature.gallery.photos_list.domain.CustomDate
+import ru.kvf.multitool.feature.gallery.photos_list.domain.Photo
 
 @SuppressLint("InlinedApi")
 @Composable
 fun PhotosListUi(
-    vm: PhotosListViewModel = hiltViewModel()
+    vm: PhotosListViewModel = hiltViewModel(),
+    onClickPhoto: (Uri) -> Unit
 ) {
     val context = LocalContext.current
     val state by vm.collectAsState()
@@ -83,7 +82,10 @@ fun PhotosListUi(
 
             it.isLoading -> FullScreenLoader()
 
-            else -> Content(photos = it.photos)
+            else -> Content(
+                photos = it.photos,
+                onClickPhoto = onClickPhoto
+            )
         }
     }
 
@@ -92,7 +94,8 @@ fun PhotosListUi(
 
 @Composable
 private fun Content(
-    photos: Map<CustomDate, List<Photo>>
+    photos: Map<CustomDate, List<Photo>>,
+    onClickPhoto: (Uri) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(4),
@@ -117,6 +120,7 @@ private fun Content(
                     modifier = Modifier
                         .aspectRatio(1f)
                         .padding(1.dp)
+                        .clickable { onClickPhoto(photo.uri) }
                 )
             }
         }
@@ -152,5 +156,7 @@ private fun PleaseGrantPermissionsBanner(
 @Preview
 @Composable
 private fun ContentPreview() {
-    Box(modifier = Modifier.fillMaxSize().background(Color.Blue))
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(Color.Blue))
 }

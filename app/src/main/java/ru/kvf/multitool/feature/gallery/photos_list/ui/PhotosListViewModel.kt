@@ -1,12 +1,9 @@
-package ru.kvf.multitool.feature.pick_photo.photos_list.ui
+package ru.kvf.multitool.feature.gallery.photos_list.ui
 
 import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
 import android.provider.MediaStore
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -16,8 +13,8 @@ import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import ru.kvf.multitool.feature.pick_photo.photos_list.domain.CustomDate
-import ru.kvf.multitool.feature.pick_photo.photos_list.domain.Photo
+import ru.kvf.multitool.feature.gallery.photos_list.domain.CustomDate
+import ru.kvf.multitool.feature.gallery.photos_list.domain.Photo
 import java.util.Calendar
 import java.util.Date
 import javax.inject.Inject
