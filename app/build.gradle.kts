@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+ver        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
@@ -53,41 +53,13 @@ android {
 
 dependencies {
 
-    //orbit
-    implementation("org.orbit-mvi:orbit-viewmodel:6.1.0")
-    implementation("org.orbit-mvi:orbit-compose:6.1.0")
-
-    //coil
-    implementation("io.coil-kt:coil-compose:2.5.0")
-
-    //gson
-    implementation("com.google.code.gson:gson:2.10.1")
-
-    //retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
-    kapt("com.google.dagger:hilt-compiler:2.48.1")
-
-    //navigation
-    implementation("androidx.navigation:navigation-compose:2.7.5")
-
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(libs.bundles.orbit)
+    implementation(libs.coil)
+    implementation(libs.gson)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.bundles.hilt)
+    kapt(libs.hilt.kapt)
+    implementation(libs.navigation)
+    implementation(libs.bundles.ui)
+    debugImplementation(libs.compose.ui.tooling)
 }
