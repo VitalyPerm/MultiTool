@@ -53,6 +53,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
     implementation(libs.bundles.orbit)
     implementation(libs.coil)
     implementation(libs.gson)

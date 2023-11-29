@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import ru.kvf.multitool.feature.cat.ui.CatUi
 import ru.kvf.multitool.feature.gallery.galleryRouter
 import ru.kvf.multitool.feature.select_feature.SelectFeatureUi
+import ru.kvf.multitool.feature.test.TestUi
 
 @Composable
 fun Navigation(
@@ -39,5 +40,9 @@ fun Navigation(
         }
 
         galleryRouter(navController)
+
+        composable(RootScreen.Test.route) {
+            TestUi()
+        }
     }
 }

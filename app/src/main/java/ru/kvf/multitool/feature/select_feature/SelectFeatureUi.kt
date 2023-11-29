@@ -48,6 +48,12 @@ fun SelectFeatureUi(
                 onClick(RootScreen.Gallery)
             }
         }
+
+        item {
+            Cell(name = RootScreen.Test.route) {
+                onClick(RootScreen.Test)
+            }
+        }
     }
 }
 
